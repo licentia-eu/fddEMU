@@ -22,7 +22,7 @@
 #include "simpleUART.h"
 #include <stdlib.h> //itoa
 
-#if defined (__AVR_ATmega328P__)
+#if defined (__AVR_ATmega328P__) || defined (__AVR_ATmega328PB__)
     #define UCSRA   UCSR0A
     #define UCSRB   UCSR0B
     #define UDRE    UDRE0
@@ -75,7 +75,7 @@ stdin = stdout = stderr = &UART_stdinout;
 #endif //_STDIO_H_ stdio streams
 }
 
-#if defined (__AVR_ATmega328P__)
+#if defined (__AVR_ATmega328P__) || defined (__AVR_ATmega328PB__)
 
 void UART0::init(uint32_t baud)
 {   //https://forum.arduino.cc/t/over-600-bytes-of-ram-for-serial-on-a-mega-gasp/71429

@@ -24,7 +24,7 @@
 #include <avr/io.h>
 #include <avr/pgmspace.h>
 
-#if defined(__AVR_ATmega328P__)
+#if defined(__AVR_ATmega328P__) || defined(__AVR_ATmega328PB__)
 
 asm ("   .equ TIFR,    0x16\n"  // timer 1 flag register
      "   .equ TOV,     0\n"     // overflow flag

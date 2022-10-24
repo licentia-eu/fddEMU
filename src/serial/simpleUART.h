@@ -27,7 +27,7 @@
 #include <stdio.h> //sprintf & printf
 #include <string.h> //strlen
 
-#if defined (__AVR_ATmega328P__)
+#if defined (__AVR_ATmega328P__) || defined (__AVR_ATmega328PB__)
     #define rxReady (UCSR0A & (1 << RXC0))
 #elif defined (__AVR_ATmega32U4__)
     #include "USBtoSerial.h"

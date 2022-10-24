@@ -40,7 +40,7 @@ class driveStatus ds;
 class FloppyDrive drive[N_DRIVE]; //will be used as extern
 
 //Interrupt routines
-#if defined (__AVR_ATmega328P__)
+#if defined (__AVR_ATmega328P__) || defined (__AVR_ATmega328PB__)
 ISR(INT0_vect) //int0 pin 2 of port D
 #elif defined (__AVR_ATmega32U4__)
 ISR(INT2_vect) //int2
@@ -58,7 +58,7 @@ void initFDDpins()
 	//To write a "0" to output pin, respective pin is set to output
 	pinsInitialized = false;
 	cli(); //disable interrupts
-#if defined (__AVR_ATmega328P__)
+#if defined (__AVR_ATmega328P__)  || defined (__AVR_ATmega328PB__)
 	//Setup Input and Output pins as Inputs
 	DDRD &= 0b00000011; //D0 and D1 is RX & TX
 	DDRB &= 0b11000000; //B6 & B7 is XTAL1 & XTAL2

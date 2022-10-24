@@ -12,11 +12,17 @@
 #include "integer.h"
 
 // SD chip select pin
-#if (defined(__AVR_ATmega328P__)||defined(__AVR_ATmega168__)||defined(__AVR_ATmega168P__))
+#if (defined(__AVR_ATmega328P__)||defined(__AVR_ATmega328PB__)||defined(__AVR_ATmega168__)||defined(__AVR_ATmega168P__))
   #define SD_CS_PIN 10
 #elif (defined(__AVR_ATmega32U4__))||(defined(__AVR_ATmega16U2__))
   #define SD_CS_PIN A0  //PF7 (Arduino pro micro)
-#endif  
+#endif
+
+#if defined(__AVR_ATmega328PB__)
+  #define SPCR SPCR0
+  #define SPDR SPDR0
+  #define SPSR SPSR0
+#endif
 
 // Use SPI SCK divisor of 2 if nonzero else 4.
 #define SPI_FCPU_DIV_2 1
@@ -44,6 +50,7 @@ inline BYTE rcv_spi (void) {xmit_spi(0XFF); return SPDR;}
 //------------------------------------------------------------------------------
 // Optimize 168 and 328 Arduinos.
 #if (defined(__AVR_ATmega328P__)\
+||defined(__AVR_ATmega328PB__)\
 ||defined(__AVR_ATmega168__)\
 ||defined(__AVR_ATmega168P__))
 #if SD_CS_PIN < 8

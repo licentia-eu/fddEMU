@@ -23,7 +23,7 @@
 #include "FloppyDisk.h"
 #include <stdint.h>
 
-#if defined (__AVR_ATmega328P__)
+#if defined (__AVR_ATmega328P__)  || defined (__AVR_ATmega328PB__)
 // -------------------------------  Pin assignments for Arduino UNO/Nano/Pro Mini (Atmega328p)  ------------------------------
 //PORTD
 #define PIN_STEP      2
